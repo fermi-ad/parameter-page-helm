@@ -4,7 +4,7 @@ metadata:
   name: parameter-page
   labels:
     {{- include "parameter-page.labels" . | nindent 4 }}
-    app.kubernetes.io/instance: parameter-page
+    app.kubernetes.io/component: parameter-page
 spec:
 
   replicas: {{ .Values.webUI.replicaCount }}
@@ -21,6 +21,7 @@ spec:
       {{- end }}
       labels:
         {{- include "parameter-page.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: parameter-page
     spec:
       containers:
         - name: parameter-page

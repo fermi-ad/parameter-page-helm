@@ -4,7 +4,7 @@ metadata:
   name: parameter-page-api
   labels:
     {{- include "parameter-page.labels" . | nindent 4 }}
-    app.kubernetes.io/instance: parameter-page-api
+    app.kubernetes.io/component: parameter-page-api
 spec:
   type: {{ .Values.API.service.type }}
   ports:
@@ -14,4 +14,4 @@ spec:
       name: http
   selector:
     {{- include "parameter-page.selectorLabels" . | nindent 4 }}
-    app.kubernetes.io/instance: parameter-page-api
+    app.kubernetes.io/component: parameter-page-api

@@ -4,15 +4,14 @@ metadata:
   name: parameter-page-api
   labels:
     {{- include "parameter-page.labels" . | nindent 4 }}
-    app.kubernetes.io/instance: parameter-page-api
+    app.kubernetes.io/component: parameter-page-api
 spec:
-
   replicas: {{ .Values.API.replicaCount }}
 
   selector:
     matchLabels:
       {{- include "parameter-page.selectorLabels" . | nindent 6 }}
-      app.kubernetes.io/instance: parameter-page-api
+      app.kubernetes.io/component: parameter-page-api
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -21,7 +20,7 @@ spec:
       {{- end }}
       labels:
         {{- include "parameter-page.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/instance: parameter-page-api
+        app.kubernetes.io/component: parameter-page-api
     spec:
       containers:
         - name: parameter-page-api

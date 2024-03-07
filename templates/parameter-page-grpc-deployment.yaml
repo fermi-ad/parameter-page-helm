@@ -4,7 +4,7 @@ metadata:
   name: parameter-page-grpc
   labels:
     {{- include "parameter-page.labels" . | nindent 4 }}
-    app.kubernetes.io/instance: parameter-page-grpc
+    app.kubernetes.io/component: parameter-page-grpc
 spec:
 
   replicas: {{ .Values.gRPC.replicaCount }}
@@ -12,7 +12,7 @@ spec:
   selector:
     matchLabels:
       {{- include "parameter-page.selectorLabels" . | nindent 6 }}
-      app.kubernetes.io/instance: parameter-page-grpc
+      app.kubernetes.io/component: parameter-page-grpc
       
   template:
     metadata:
@@ -22,7 +22,6 @@ spec:
       {{- end }}
       labels:
         {{- include "parameter-page.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/instance: parameter-page-grpc
     spec:
       containers:
         - name: parameter-page-grpc
